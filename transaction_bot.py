@@ -22,7 +22,7 @@ import re
 load_dotenv()
 
 database_path = "tr_bot.db"
-ADMIN_ID = 1954153232
+ADMIN_ID = 000000
 import logging
 
 
