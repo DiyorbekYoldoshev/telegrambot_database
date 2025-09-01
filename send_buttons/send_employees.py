@@ -13,7 +13,7 @@ def send_employees(context, employees, chat_id, message_id=None):
         )
     buttons.append([InlineKeyboardButton(text="⬅️ Back", callback_data="job_back"),
                     InlineKeyboardButton(text="❌ Close", callback_data="close")
-])
+                    ])
 
     if message_id:
         context.bot.edit_message_text(

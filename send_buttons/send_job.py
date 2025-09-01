@@ -12,7 +12,7 @@ def send_jobs(context, jobs, chat_id, message_id=None):
         ])
 
     keyboard.append([InlineKeyboardButton("❌ Close", callback_data="close")
-    ])
+                     ])
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 

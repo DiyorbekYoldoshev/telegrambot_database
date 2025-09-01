@@ -1,8 +1,9 @@
-from send_buttons import send_regions,send_jobs
+from send_buttons import send_regions, send_jobs
 from config import DATABASE
 from database import Database
 
 db = Database(DATABASE)
+
 
 def message_handler(update, context):
     message = update.message.text
@@ -12,4 +13,4 @@ def message_handler(update, context):
 
     elif message == "Jobs":
         jobs = db.get_all_jobs()
-        send_jobs(context=context,jobs=jobs,chat_id=update.message.from_user.id)
+        send_jobs(context=context, jobs=jobs, chat_id=update.message.from_user.id)

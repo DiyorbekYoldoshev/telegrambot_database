@@ -15,7 +15,6 @@ def send_countries(context, countries, chat_id, message_id=None):
                     InlineKeyboardButton("❌ Close", callback_data="close")
                     ])
 
-
     if message_id:
         context.bot.edit_message_text(
             chat_id=chat_id,

@@ -22,13 +22,13 @@ class Database:
         jobs = dict_fetchall(self.cursor)
         return jobs
 
-    def get_employees_by_job(self,job_id):
-        self.cursor.execute("SELECT * FROM employees WHERE job_id = ?",(job_id,))
+    def get_employees_by_job(self, job_id):
+        self.cursor.execute("SELECT * FROM employees WHERE job_id = ?", (job_id,))
         employees = dict_fetchall(self.cursor)
         return employees
 
-    def get_all_locations(self,country_id):
-        self.cursor.execute("SELECT * FROM locations WHERE country_id = ?",(country_id,))
+    def get_all_locations(self, country_id):
+        self.cursor.execute("SELECT * FROM locations WHERE country_id = ?", (country_id,))
         locations = dict_fetchall(self.cursor)
         print(locations)
         return locations
@@ -40,7 +40,6 @@ class Database:
             return None
         columns = [i[0] for i in self.cursor.description]
         return dict(zip(columns, row))
-
 
 
 def dict_fetchall(cursor):
