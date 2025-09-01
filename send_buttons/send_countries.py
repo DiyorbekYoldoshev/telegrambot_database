@@ -20,7 +20,7 @@ def send_countries(context, countries, chat_id, message_id=None):
         context.bot.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,
-            text="<b>Choose countries</b>",
+            text="<b>Choose Countries</b>",
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=buttons
             ),
@@ -29,7 +29,7 @@ def send_countries(context, countries, chat_id, message_id=None):
     else:
         context.bot.send_message(
             chat_id=chat_id,
-            text="<b>Choose countries</b>",
+            text="<b>Choose Countries</b>",
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=buttons
             ),

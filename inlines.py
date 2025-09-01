@@ -1,4 +1,4 @@
-from send_buttons import send_countries, send_regions, send_jobs, send_employees
+from send_buttons import send_countries, send_regions, send_jobs, send_employees, send_locations
 from database import Database
 
 db = Database("sample-database.db")
@@ -24,13 +24,19 @@ def inline_handler(update, context):
             employees = db.get_employees_by_job(int(data_sp[1]))
             send_employees(context=context, employees=employees, chat_id=chat_id,
                            message_id=query.message.message_id)
+
         elif data_sp[1] == 'back':
             jobs = db.get_all_jobs()
             send_jobs(context=context, jobs=jobs, chat_id=chat_id,
                       message_id=query.message.message_id)
 
     elif data_sp[0] == "country":
-        pass
+
+        if data_sp[0] == 'location':
+            locations = db.get_all_locations(int(data_sp[1]))
+            send_locations(context=context, locations=locations, chat_id=chat_id,
+                       message_id=query.message.message_id)
+
     elif data_sp[0] == "employee":
         pass
     elif data_sp[0] == "close":
