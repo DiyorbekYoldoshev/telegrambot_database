@@ -36,6 +36,7 @@ class Database:
     def get_all_dependents(self,employee_id):
         self.cursor.execute("SELECT * FROM dependents WHERE employee_id = ?",(employee_id,))
         dependents = dict_fetchall(self.cursor)
+        print(dependents)
         return dependents
 
 

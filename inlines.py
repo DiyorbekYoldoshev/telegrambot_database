@@ -4,7 +4,6 @@ from send_buttons.send_dependents import send_dependents
 
 db = Database("sample-database.db")
 
-
 def inline_handler(update, context):
     query = update.callback_query
     data_sp = str(query.data).split("_")
@@ -25,36 +24,24 @@ def inline_handler(update, context):
             employees = db.get_employees_by_job(int(data_sp[1]))
             send_employees(context=context, employees=employees, chat_id=chat_id,
                            message_id=query.message.message_id)
-
         elif data_sp[1] == 'back':
             jobs = db.get_all_jobs()
             send_jobs(context=context, jobs=jobs, chat_id=chat_id,
                       message_id=query.message.message_id)
 
-    elif data_sp[0] == "location":
-        if data_sp[1].isdigit():
-            locations = db.get_all_locations(int(data_sp[1]))
-            send_locations(context=context, locations=locations, chat_id=chat_id,
-                           message_id=query.message.message_id)
-
-        # elif data_sp[1] == 'back':
-        #     jobs = db.get_all_regions()
-        #     send_locations(context=context, jobs=jobs, chat_id=chat_id,
-        #               message_id=query.message.message_id)
-        #
-    elif data_sp[0] == "country":
-        pass
-        # if data_sp[0] == 'location':
-        #     locations = db.get_all_locations(int(data_sp[1]))
-        #     send_locations(context=context, locations=locations, chat_id=chat_id,
-        #                    message_id=query.message.message_id)
-
     elif data_sp[0] == "employee":
-
-        if data_sp[0] == "dependents":
+        if data_sp[1].isdigit():
+            # Employee ID orqali dependentsni olish
             dependents = db.get_all_dependents(int(data_sp[1]))
-            send_dependents(context,dependents=dependents,chat_id=chat_id,message_id=query.message.message_id)
+            send_dependents(context, dependents=dependents, chat_id=chat_id,
+                            message_id=query.message.message_id)
 
+    elif data_sp[0] == "dependent":
+        if data_sp[1] == "back":
+            # Bu yerda qaysi employee ekanligini bilish kerak, lekin hozircha oddiy orqaga qaytish
+            jobs = db.get_all_jobs()
+            send_jobs(context=context, jobs=jobs, chat_id=chat_id,
+                      message_id=query.message.message_id)
 
     elif data_sp[0] == "close":
         query.message.edit_text(text="🕓", reply_markup=None)

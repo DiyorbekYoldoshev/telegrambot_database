@@ -15,7 +15,3 @@ def message_handler(update, context):
         jobs = db.get_all_jobs()
         send_jobs(context=context, jobs=jobs, chat_id=update.message.from_user.id)
 
-
-    elif message == "Locations":
-        locations = db.get_all_locations()
-        send_locations(context=context, locations=locations, chat_id=update.message.from_user.id)

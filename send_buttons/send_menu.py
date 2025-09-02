@@ -5,7 +5,6 @@ def send_main_menu(chat_id, context):
     buttons = [
         [KeyboardButton(text="Regions")],
         [KeyboardButton(text="Jobs")],
-        [KeyboardButton(text="Locations")],
     ]
     context.bot.send_message(
         chat_id=chat_id,
