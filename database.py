@@ -27,8 +27,8 @@ class Database:
         employees = dict_fetchall(self.cursor)
         return employees
 
-    def get_all_locations(self):
-        self.cursor.execute("SELECT * FROM locations")
+    def get_all_locations(self, country_id):
+        self.cursor.execute("SELECT * FROM locations WHERE country_id = ?", (country_id, ))
         locations = dict_fetchall(self.cursor)
         print(locations)
         return locations
@@ -39,7 +39,10 @@ class Database:
         print(dependents)
         return dependents
 
-
+    def get_locations_by_country(self, country_id):
+        self.cursor.execute("SELECT * FROM locations WHERE country_id = ?", (str(country_id),))
+        locations = dict_fetchall(self.cursor)
+        return locations
 
 def dict_fetchall(cursor):
     columns = [i[0] for i in cursor.description]

@@ -4,6 +4,7 @@ from send_buttons.send_dependents import send_dependents
 
 db = Database("sample-database.db")
 
+
 def inline_handler(update, context):
     query = update.callback_query
     data_sp = str(query.data).split("_")
@@ -15,6 +16,22 @@ def inline_handler(update, context):
             send_countries(context=context, countries=countries, chat_id=chat_id,
                            message_id=query.message.message_id)
         elif data_sp[1] == 'back':
+            regions = db.get_all_regions()
+            send_regions(context=context, regions=regions, chat_id=chat_id,
+                         message_id=query.message.message_id)
+
+    elif data_sp[0] == "country":
+        if len(data_sp) > 1 and data_sp[1].isdigit():
+            country_code = data_sp[1]
+            locations = db.get_locations_by_country(country_code)
+            send_locations(context=context, locations=locations, chat_id=chat_id,
+                           message_id=query.message.message_id)
+        elif data_sp[1] == 'back':
+            regions = db.get_all_regions()
+            send_regions(context=context, regions=regions, chat_id=chat_id,
+                         message_id=query.message.message_id)
+    elif data_sp[0] == "location":
+        if data_sp[1] == "back":
             regions = db.get_all_regions()
             send_regions(context=context, regions=regions, chat_id=chat_id,
                          message_id=query.message.message_id)
@@ -31,14 +48,12 @@ def inline_handler(update, context):
 
     elif data_sp[0] == "employee":
         if data_sp[1].isdigit():
-            # Employee ID orqali dependentsni olish
             dependents = db.get_all_dependents(int(data_sp[1]))
             send_dependents(context, dependents=dependents, chat_id=chat_id,
                             message_id=query.message.message_id)
 
     elif data_sp[0] == "dependent":
         if data_sp[1] == "back":
-            # Bu yerda qaysi employee ekanligini bilish kerak, lekin hozircha oddiy orqaga qaytish
             jobs = db.get_all_jobs()
             send_jobs(context=context, jobs=jobs, chat_id=chat_id,
                       message_id=query.message.message_id)
