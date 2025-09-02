@@ -1,4 +1,4 @@
-from send_buttons import send_regions, send_jobs
+from send_buttons import send_regions, send_jobs, send_locations
 from config import DATABASE
 from database import Database
 
@@ -14,3 +14,8 @@ def message_handler(update, context):
     elif message == "Jobs":
         jobs = db.get_all_jobs()
         send_jobs(context=context, jobs=jobs, chat_id=update.message.from_user.id)
+
+
+    elif message == "Locations":
+        locations = db.get_all_locations()
+        send_locations(context=context, locations=locations, chat_id=update.message.from_user.id)

@@ -27,19 +27,17 @@ class Database:
         employees = dict_fetchall(self.cursor)
         return employees
 
-    def get_all_locations(self, country_id):
-        self.cursor.execute("SELECT * FROM locations WHERE country_id = ?", (country_id,))
+    def get_all_locations(self):
+        self.cursor.execute("SELECT * FROM locations")
         locations = dict_fetchall(self.cursor)
         print(locations)
         return locations
 
-    def get_location_by_id(self, location_id):
-        self.cursor.execute("SELECT * FROM locations WHERE location_id = ?", (location_id,))
-        row = self.cursor.fetchone()
-        if not row:
-            return None
-        columns = [i[0] for i in self.cursor.description]
-        return dict(zip(columns, row))
+    def get_all_dependents(self,employee_id):
+        self.cursor.execute("SELECT * FROM dependents WHERE employee_id = ?",(employee_id,))
+        dependents = dict_fetchall(self.cursor)
+        return dependents
+
 
 
 def dict_fetchall(cursor):

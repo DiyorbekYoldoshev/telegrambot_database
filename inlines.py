@@ -1,5 +1,6 @@
 from send_buttons import send_countries, send_regions, send_jobs, send_employees, send_locations
 from database import Database
+from send_buttons.send_dependents import send_dependents
 
 db = Database("sample-database.db")
 
@@ -30,15 +31,31 @@ def inline_handler(update, context):
             send_jobs(context=context, jobs=jobs, chat_id=chat_id,
                       message_id=query.message.message_id)
 
-    elif data_sp[0] == "country":
-
-        if data_sp[0] == 'location':
+    elif data_sp[0] == "location":
+        if data_sp[1].isdigit():
             locations = db.get_all_locations(int(data_sp[1]))
             send_locations(context=context, locations=locations, chat_id=chat_id,
                            message_id=query.message.message_id)
 
-    elif data_sp[0] == "employee":
+        # elif data_sp[1] == 'back':
+        #     jobs = db.get_all_regions()
+        #     send_locations(context=context, jobs=jobs, chat_id=chat_id,
+        #               message_id=query.message.message_id)
+        #
+    elif data_sp[0] == "country":
         pass
+        # if data_sp[0] == 'location':
+        #     locations = db.get_all_locations(int(data_sp[1]))
+        #     send_locations(context=context, locations=locations, chat_id=chat_id,
+        #                    message_id=query.message.message_id)
+
+    elif data_sp[0] == "employee":
+
+        if data_sp[0] == "dependents":
+            dependents = db.get_all_dependents(int(data_sp[1]))
+            send_dependents(context,dependents=dependents,chat_id=chat_id,message_id=query.message.message_id)
+
+
     elif data_sp[0] == "close":
         query.message.edit_text(text="🕓", reply_markup=None)
         context.bot.delete_message(chat_id=chat_id, message_id=query.message.message_id)
