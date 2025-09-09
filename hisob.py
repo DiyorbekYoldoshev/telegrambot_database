@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 database_path = "tr_bot.db"
 load_dotenv()
-ADMIN_ID = 0000000
+ADMIN_ID = 1954153232
 
 
 

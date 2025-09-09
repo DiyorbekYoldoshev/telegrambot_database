@@ -22,7 +22,7 @@ import re
 load_dotenv()
 
 database_path = "tr_bot.db"
-ADMIN_ID = 000000
+ADMIN_ID = 1954153232
 import logging
 
 
@@ -34,6 +34,7 @@ logging.basicConfig(
         logging.StreamHandler()          #
     ]
 )
+
 
 
 def cancel(update, context):
@@ -266,13 +267,14 @@ def main():
         group=10
     )
 
-    updater.start_polling()
-    updater.idle()
+
     logging.debug("Bu DEBUG xabari (faqat tekshiruv uchun).")
     logging.info("Foydalanuvchi kirdi.")
     logging.warning("Xavfli vaziyat yuz berdi!")
     logging.error("Xatolik sodir bo‘ldi!")
     logging.critical("Juda jiddiy xato!!!")
 
+    updater.start_polling()
+    updater.idle()
 if __name__ == "__main__":
     main()
