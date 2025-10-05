@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/telegrambot_databse.iml" filepath="$PROJECT_DIR$/.idea/telegrambot_databse.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/payment_test.iml" filepath="$PROJECT_DIR$/.idea/payment_test.iml" />
+>>>>>>> f6de8f7017bd84fdaa9f2509bb70b846af171442
     </modules>
   </component>
 </project>

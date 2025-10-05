@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< HEAD
     <option name="sdkName" value="Python 3.12 (telegrambot_databse)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (telegrambot_databse)" project-jdk-type="Python SDK" />
+=======
+    <option name="sdkName" value="Python 3.12 (payment_test)" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (payment_test)" project-jdk-type="Python SDK" />
+>>>>>>> f6de8f7017bd84fdaa9f2509bb70b846af171442
 </project>
