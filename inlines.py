@@ -10,6 +10,7 @@ def inline_handler(update, context):
     data_sp = str(query.data).split("_")
     chat_id = query.message.chat.id
 
+
     if data_sp[0] == "region":
         if data_sp[1].isdigit():
             countries = db.get_countries_by_region(int(data_sp[1]))
